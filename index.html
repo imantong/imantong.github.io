@@ -249,6 +249,270 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/git修改文件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Antong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img5.duitang.com/uploads/item/201607/24/20160724124910_TkPrd.thumb.224_0.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Antong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/11/git修改文件/" itemprop="url">git管理修改</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T00:00:00+08:00">
+                2018-01-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h3><p>工作区（working directory): 电脑里的目录</p>
+<p>Git版本库（repository): 工作区中到.git目录</p>
+<blockquote>
+<p>暂存区（stage): 在版本库中</p>
+<p>master分支： git自动创建</p>
+<p>HEAD指针： 指向master</p>
+</blockquote>
+<p><code>git add</code>: 把文件修改添加到暂存区</p>
+<p><code>git commit</code>： 把暂存区的所有内容提交到当前分支</p>
+<hr>
+
+<h3 id="管理修改"><a href="#管理修改" class="headerlink" title="管理修改"></a>管理修改</h3><p>每次修改，如果不 add 到暂存区，就不会加入到 commit 中。</p>
+<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><p>一般，直接在文件管理器中删除文件，或在终端用 <code>rm</code> 命令删除。</p>
+<p>然后，要从版本库中删除文件，要用 <code>git rm</code>，并且 <code>git commit</code>。</p>
+<p>```<br>$ git rm test.txt<br>$ git commit -m “remove test.txt”</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/05/position属性/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Antong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img5.duitang.com/uploads/item/201607/24/20160724124910_TkPrd.thumb.224_0.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Antong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/05/position属性/" itemprop="url">position属性</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-05T00:00:00+08:00">
+                2018-01-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>position属性用于指定一个元素在文档中的定位方式。</p>
+<p>取值：</p>
+<ul>
+<li>static : 默认，即没有定位，元素出现在正常流中。</li>
+<li>relative : 为元素预留空间，在文档中的正常位置偏移给定的值。</li>
+<li>absolute : 不为元素预留空间，通过指定元素相对于最近的非 static 定位祖先元素的偏移，来确定元素位置。</li>
+<li>fixed : 不为元素预留空间，元素的位置相对于浏览器窗口是固定位置。元素的位置在屏幕滚动时不会改变。</li>
+<li>sticky : 粘性定位是相对定位和固定定位的混合。元素在跨越特定阈值前为相对定位，之后为固定定位。</li>
+</ul>
+<p>重叠的元素：</p>
+<p>z-index：指定了一个元素的堆叠顺序。一个元素可以有正数或负数的堆叠顺序，具有更高堆叠顺序的元素总是在较低的堆叠顺序元素的前面。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/04/导航栏/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -462,6 +726,139 @@
 <p>这样制定的表格有双边框，因为table、th和td元素都有独立的边界。</p>
 <p>为了显示单个边框，使用 border-collapse属性：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">table</span><br><span class="line">&#123;</span><br><span class="line">	border-collapse:collapse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/04/伪类选择器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Antong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img5.duitang.com/uploads/item/201607/24/20160724124910_TkPrd.thumb.224_0.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Antong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/04/伪类选择器/" itemprop="url">伪类选择器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-04T00:00:00+08:00">
+                2018-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>伪类选择器：</p>
+<p><code>:first-child</code>   父元素的第一个子元素</p>
+<p><code>:last-child</code>   父元素的最后一个子元素</p>
+<p><code>:nth-child(an+b)</code> 匹配文档树中在其之前具有 an+b-1 个兄弟节点的元素，其中 n 为正值或零值。简单点说，就是匹配那些在同系列兄弟节点中的位置与模式 an+b 匹配的元素。a 和 b 都必须为整数，并且元素的第一个子元素的下标为 1。</p>
+<p>eg:</p>
+<blockquote>
+<p>tr:nth-child(2n+1)  表示HTML表格中的奇数行。</p>
+<p>tr:nth-child(odd) 表示HTML表格中的奇数行。</p>
+<p>tr:nth-child(2n) 表示HTML表格中的偶数行。</p>
+<p>tr:nth-child(even) 表示HTML表格中的偶数行。</p>
+</blockquote>
+<p><code>:nth-of-type(an+b)</code> 匹配那些在它之前有 an+b-1 个相同类型兄弟节点的元素，其中 n 为正值或零值。</p>
+<p><strong>参考资料</strong>：</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Getting_started/Selectors" target="_blank" rel="noopener">MDN CSS 选择器</a></p>
 
           
         
@@ -1245,7 +1642,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
