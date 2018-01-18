@@ -249,6 +249,169 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/28/git学习笔记（1）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Antong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img5.duitang.com/uploads/item/201607/24/20160724124910_TkPrd.thumb.224_0.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Antong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/28/git学习笔记（1）/" itemprop="url">git学习笔记（1）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-28T14:42:19+08:00">
+                2017-12-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="初始化设置"><a href="#初始化设置" class="headerlink" title="初始化设置"></a>初始化设置</h1><p>因为Git是分布式版本控制系统，所以，每台机器都必须自报家门：你的名字和邮箱。</p>
+<p><code>$ git config --global user.name &quot;Your name&quot;</code></p>
+<p><code>$ git config --global user.email &quot;email@example.com&quot;</code></p>
+<p><strong>注意:</strong><code>git config --global</code>命令中的<code>--global</code>参数，表示你这台电脑上所有的Git仓库都会使用这个配置。</p>
+<h1 id="创建Git仓库"><a href="#创建Git仓库" class="headerlink" title="创建Git仓库"></a>创建Git仓库</h1><p>版本库又名仓库（<strong>repository</strong>），可以简单理解为一个目录，这个目录里所有的文件都可以被Git管理起来。</p>
+<p>创建版本库，首先，选择一个合适的地方，创建一个空目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir learngit</span><br><span class="line">$ cd learngit</span><br><span class="line">$ pwd</span><br></pre></td></tr></table></figure>
+<p><code>pwd</code>命令用于显示当前目录。</p>
+<p>在我的Mac上，这个仓库位于<code>/Users/antong/git/learngit</code>。</p>
+<p>第二步，把这个目录变成git可以管理的仓库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br><span class="line">Initialized empty Git repository in /Users/antong/git/learngit/.git/</span><br></pre></td></tr></table></figure>
+<p>这时Git就建好了一个空的仓库，而且在当前目录下多了一个<code>.git</code>的目录，这个目录是Git来跟踪管理版本库的，<strong>注意千万不要手动修改这个目录里面的文件</strong>，不然改乱了，就把Git仓库给破坏了。</p>
+<p>如果你没有看到<code>.git</code>目录，那是因为这个目录默认是隐藏的，用<code>ls -ah</code>命令就可以看见。</p>
+<p>初始化Git仓库就完成了，在这个<code>learngit</code>目录下的所有文件以及子目录下的文件，都可以被Git跟踪管理。</p>
+<h1 id="添加文件到Git仓库"><a href="#添加文件到Git仓库" class="headerlink" title="添加文件到Git仓库"></a>添加文件到Git仓库</h1><p>下面在Git仓库的目录下新建文件，比如新建一个<code>test.txt</code>文件。</p>
+<p>注意一定要放到<code>learngit</code>目录下（子目录也行），因为这是一个Git仓库，放到其他地方Git再厉害也找不到这个文件。</p>
+<p>下面可以打开编辑器编写文件。</p>
+<p>编写好后要把文件放到Git仓库中：</p>
+<p>第一步，用命令<code>git add</code>把文件添加到仓库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add test.txt</span><br></pre></td></tr></table></figure>
+<p>第二步，用命令<code>git commit</code>把文件提交到仓库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;first commit&quot;</span><br></pre></td></tr></table></figure>
+<p><code>-m</code>后面输入的是本次提交的说明。</p>
+<p><em>为什么Git添加文件需要<code>add</code>，<code>commit</code>一共两步呢？</em></p>
+<p>因为<code>commit</code>可以一次提交很多文件，所以你可以多次<code>add</code>不同的文件，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add file1.txt</span><br><span class="line">$ git add file2.txt file3.txt</span><br><span class="line">$ git commit -m &quot;add 3 files&quot;</span><br></pre></td></tr></table></figure>
+<h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h1><p>有了本地Git仓库，还要建立远程仓库，这样就可以在网上浏览啦～<br>Github仓库可以免费托管我们本地的Git仓库，所以下面要把Git仓库推送到Github上。</p>
+<p>首先，建立本地Git仓库和Github仓库的连接。</p>
+<p>由于本地Git仓库和GitHub仓库之间的传输是通过SSH加密的，所以要创建SSH Key。</p>
+<p>具体创建方法看这里：<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374385852170d9c7adf13c30429b9660d0eb689dd43a000" target="_blank" rel="noopener">远程仓库 - 廖雪峰的官方网站</a></p>
+<h2 id="添加远程库"><a href="#添加远程库" class="headerlink" title="添加远程库"></a>添加远程库</h2><p>在Github上创建仓库，然后让这个仓库和本地Git仓库同步，这样就有远程仓库了。</p>
+<p>首先，登录Github，创建一个新的仓库。仓库名和本地相同。</p>
+<p>然后，把本地仓库推送到Github仓库，在本地仓库下运行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add origin git@github.com:imantong/learngit.git</span><br></pre></td></tr></table></figure>
+<p><code>imantong</code>是我的Github账户名，<code>learngit</code>是要推送的本地Git仓库。</p>
+<p><code>origin</code>是远程库的名字，这是Git的默认叫法。</p>
+<p>接下来，用<code>git push</code>命令把本地库的所有内容推送到远程库上：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin master</span><br></pre></td></tr></table></figure>
+<p>上面的命令把当前分支<code>master</code>推送到远程，<code>-u</code>参数是把本地的<code>master</code>分支和远程的<code>master</code>分支关联起来。</p>
+<p><mark>SSH警告：</mark>第一次使用Git的clone或者push命令连接GitHub时，会得到一个警告：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host &apos;github.com (xx.xx.xx.xx)&apos; can&apos;t be established.</span><br><span class="line">RSA key fingerprint is xx.xx.xx.xx.xx.</span><br><span class="line">Are you sure you want to continue connecting (yes/no)?</span><br></pre></td></tr></table></figure>
+<p>这是因为Git使用SSH连接，而SSH连接在第一次验证GitHub服务器的Key时，需要你确认GitHub的Key的指纹信息是否真的来自GitHub的服务器，输入<code>yes</code>回车即可。</p>
+<p>此后，每次本地提交后，只要有必要，就可以使用命令<code>git push origin master</code>推送最新修改。</p>
+<p>参考：<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">Git教程 - 廖雪峰的官方网站</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/27/Mac下使用Hexo-Github搭建博客/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -705,7 +868,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
