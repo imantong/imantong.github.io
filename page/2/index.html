@@ -249,7 +249,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/04/伪类选择器/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/04/border-collapse属性折叠边框/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Antong">
@@ -268,7 +268,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/04/伪类选择器/" itemprop="url">伪类选择器</a></h1>
+                <a class="post-title-link" href="/2018/01/04/border-collapse属性折叠边框/" itemprop="url">border-collapse属性折叠表格边框</a></h1>
         
 
         <div class="post-meta">
@@ -320,20 +320,11 @@
       
         
           
-            <p>伪类选择器：</p>
-<p><code>:first-child</code>   父元素的第一个子元素</p>
-<p><code>:last-child</code>   父元素的最后一个子元素</p>
-<p><code>:nth-child(an+b)</code> 匹配文档树中在其之前具有 an+b-1 个兄弟节点的元素，其中 n 为正值或零值。简单点说，就是匹配那些在同系列兄弟节点中的位置与模式 an+b 匹配的元素。a 和 b 都必须为整数，并且元素的第一个子元素的下标为 1。</p>
-<p>eg:</p>
-<blockquote>
-<p>tr:nth-child(2n+1)  表示HTML表格中的奇数行。</p>
-<p>tr:nth-child(odd) 表示HTML表格中的奇数行。</p>
-<p>tr:nth-child(2n) 表示HTML表格中的偶数行。</p>
-<p>tr:nth-child(even) 表示HTML表格中的偶数行。</p>
-</blockquote>
-<p><code>:nth-of-type(an+b)</code> 匹配那些在它之前有 an+b-1 个相同类型兄弟节点的元素，其中 n 为正值或零值。</p>
-<p><strong>参考资料</strong>：</p>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Getting_started/Selectors" target="_blank" rel="noopener">MDN CSS 选择器</a></p>
+            <p>指定表格边框：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">table, th, td </span><br><span class="line">&#123;</span><br><span class="line">	border: 1px solid back;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样制定的表格有双边框，因为table、th和td元素都有独立的边界。</p>
+<p>为了显示单个边框，使用 border-collapse属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">table</span><br><span class="line">&#123;</span><br><span class="line">	border-collapse:collapse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
