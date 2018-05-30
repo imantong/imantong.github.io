@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="title: 数组去重date: 2018-05-30tags: - JavaScript  unique([1,3,3,2])  //return [1,3,2] unique([1,3,’3’,2])  //return [1,3,’3’,2] 1.普通版时间复杂度为O(n^2) 定义一个变量数组res保存结果，遍历需要去重的数组，遍历res，如果该元素已经存在res中，则为重复元素，否则添">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2017/12/27/hello-world/index.html">
+<meta property="og:title" content="Antong">
+<meta property="og:url" content="http://yoursite.com/2018/05/30/数组去重/index.html">
 <meta property="og:site_name" content="Antong">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="title: 数组去重date: 2018-05-30tags: - JavaScript  unique([1,3,3,2])  //return [1,3,2] unique([1,3,’3’,2])  //return [1,3,’3’,2] 1.普通版时间复杂度为O(n^2) 定义一个变量数组res保存结果，遍历需要去重的数组，遍历res，如果该元素已经存在res中，则为重复元素，否则添">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-27T05:44:52.575Z">
+<meta property="og:updated_time" content="2018-05-30T15:44:33.843Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="Antong">
+<meta name="twitter:description" content="title: 数组去重date: 2018-05-30tags: - JavaScript  unique([1,3,3,2])  //return [1,3,2] unique([1,3,’3’,2])  //return [1,3,’3’,2] 1.普通版时间复杂度为O(n^2) 定义一个变量数组res保存结果，遍历需要去重的数组，遍历res，如果该元素已经存在res中，则为重复元素，否则添">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/12/27/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/30/数组去重/"/>
 
 
 
 
 
-  <title>Hello World | Antong</title>
+  <title> | Antong</title>
   
 
 
@@ -252,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/27/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/30/数组去重/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Antong">
@@ -269,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -281,8 +281,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-27T13:44:52+08:00">
-                2017-12-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-30T23:44:33+08:00">
+                2018-05-30
               </time>
             
 
@@ -319,16 +319,28 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+        <hr>
+<p>title: 数组去重<br>date: 2018-05-30<br>tags:</p>
+<pre><code>- JavaScript
+</code></pre><hr>
+<p>unique([1,3,3,2])  //return [1,3,2]</p>
+<p>unique([1,3,’3’,2])  //return [1,3,’3’,2]</p>
+<h4 id="1-普通版"><a href="#1-普通版" class="headerlink" title="1.普通版"></a>1.普通版</h4><p>时间复杂度为O(n^2)</p>
+<p>定义一个变量数组res保存结果，遍历需要去重的数组，遍历res，如果该元素已经存在res中，则为重复元素，否则添加到res中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function unique0 (arr) &#123;</span><br><span class="line">	let res = [];</span><br><span class="line">	// 遍历arr每个元素</span><br><span class="line">	for (let i = 0, len = arr.length; i &lt; len; i++) &#123;</span><br><span class="line">		for (let j = 0, rlen = res.length; j &lt; rlen; j++) &#123;</span><br><span class="line">			// 遍历res, 查找arr[i]是否已经存在</span><br><span class="line">			if (arr[i] === res[j]) break;</span><br><span class="line">		&#125;</span><br><span class="line">		// res遍历完，没找到，添加arr[i]</span><br><span class="line">		if (j === rlen) &#123;</span><br><span class="line">			res.push(arr[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-简化版"><a href="#2-简化版" class="headerlink" title="2.简化版"></a>2.简化版</h4><p>时间复杂度还是O(n^2)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function unique1 (arr) &#123;</span><br><span class="line">	return arr.filter( (item, index) =&gt; &#123;</span><br><span class="line">		// indexOf返回查找到的第一个元素的下标，如果该下标不为index,说明是重复元素，则过滤掉</span><br><span class="line">		return arr.indexOf(item) === index;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-Hash结构"><a href="#3-Hash结构" class="headerlink" title="3.Hash结构"></a>3.Hash结构</h4><p>时间复杂度为O(n)</p>
+<p>定义一个对象obj，将数组元素作为对象的键，遍历数组，如果键已经存在，则为重复元素，否则将元素存入res结果数组，并为obj添加键。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function unique2 (arr) &#123;</span><br><span class="line">	let res = [];</span><br><span class="line">	let obj = &#123;&#125;;</span><br><span class="line">	arr.forEach( (item, index) =&gt; &#123;</span><br><span class="line">		if (!obj[typeof item + item]) &#123;</span><br><span class="line">			res.push(item);</span><br><span class="line">			obj[typeof item + item] = 1;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">	return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-hasOwnProperty"><a href="#4-hasOwnProperty" class="headerlink" title="4.hasOwnProperty"></a>4.hasOwnProperty</h4><p>通过对象的hasOwnProperty()方法检测给定的字符串是否是对象的自有属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function unique3 (arr) &#123;</span><br><span class="line">	let obj = &#123;&#125;;</span><br><span class="line">	return arr.filter( (item, index) =&gt; &#123;</span><br><span class="line">		return obj.hasOwnProperty(typeof item + item) ? false : </span><br><span class="line">		(obj[typeof item + item] = true);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="5-区分对象类型"><a href="#5-区分对象类型" class="headerlink" title="5.区分对象类型"></a>5.区分对象类型</h4><p>上面的typeof不能区分两个对象，比如{val:1}和{val:2}，typeof item + item都是”object[object Object]”，可以使用JSON.stringify将对象序列化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function unique4 (arr) &#123;</span><br><span class="line">	let obj = &#123;&#125;;</span><br><span class="line">	return arr.filter( (item, index) =&gt; &#123;</span><br><span class="line">		return obj.hasOwnProperty(typeof item + JSON.stringify(item)) ? false : </span><br><span class="line">		(obj[typeof item + JSON.stringify(item)] = true);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="6-ES6-Map"><a href="#6-ES6-Map" class="headerlink" title="6.ES6 Map"></a>6.ES6 Map</h4><p>JavaScript的对象本质上是键值对的集合（Hash结构），但是只能用字符串作为键。<br>ES6的Map和对象类似，但“键”的范围不限于字符串，可以是各种类型的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function unique5 (arr) &#123;</span><br><span class="line">	const map = new Map();</span><br><span class="line">	return arr.filter((item) =&gt; !map.has(item) &amp;&amp; map.set(item, 1));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="7-ES6-Set"><a href="#7-ES6-Set" class="headerlink" title="7.ES6 Set"></a>7.ES6 Set</h4><p>Set类似于数组，但是成员的值都是唯一的，没有重复的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const unique6 = arr =&gt; [...new Set(arr)]</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -352,15 +364,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/05/30/闭包/" rel="next" title="闭包">
+                <i class="fa fa-chevron-left"></i> 闭包
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/27/Mac下使用Hexo-Github搭建博客/" rel="prev" title="Mac下使用Hexo+Github搭建博客">
-                Mac下使用Hexo+Github搭建博客 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -503,7 +515,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-普通版"><span class="nav-number">1.</span> <span class="nav-text">1.普通版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-简化版"><span class="nav-number">2.</span> <span class="nav-text">2.简化版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Hash结构"><span class="nav-number">3.</span> <span class="nav-text">3.Hash结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-hasOwnProperty"><span class="nav-number">4.</span> <span class="nav-text">4.hasOwnProperty</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-区分对象类型"><span class="nav-number">5.</span> <span class="nav-text">5.区分对象类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-ES6-Map"><span class="nav-number">6.</span> <span class="nav-text">6.ES6 Map</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-ES6-Set"><span class="nav-number">7.</span> <span class="nav-text">7.ES6 Set</span></a></li></ol></div>
             
 
           </div>
