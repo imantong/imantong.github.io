@@ -249,146 +249,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/30/数组去重/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Antong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://img5.duitang.com/uploads/item/201607/24/20160724124910_TkPrd.thumb.224_0.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Antong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/30/数组去重/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-30T23:44:33+08:00">
-                2018-05-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<p>title: 数组去重<br>date: 2018-05-30<br>tags:</p>
-<pre><code>- JavaScript
-</code></pre><hr>
-<p>unique([1,3,3,2])  //return [1,3,2]</p>
-<p>unique([1,3,’3’,2])  //return [1,3,’3’,2]</p>
-<h4 id="1-普通版"><a href="#1-普通版" class="headerlink" title="1.普通版"></a>1.普通版</h4><p>时间复杂度为O(n^2)</p>
-<p>定义一个变量数组res保存结果，遍历需要去重的数组，遍历res，如果该元素已经存在res中，则为重复元素，否则添加到res中。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique0</span> (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> res = [];</span><br><span class="line">	<span class="comment">// 遍历arr每个元素</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, len = arr.length; i &lt; len; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>, rlen = res.length; j &lt; rlen; j++) &#123;</span><br><span class="line">			<span class="comment">// 遍历res, 查找arr[i]是否已经存在</span></span><br><span class="line">			<span class="keyword">if</span> (arr[i] === res[j]) <span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// res遍历完，没找到，添加arr[i]</span></span><br><span class="line">		<span class="keyword">if</span> (j === rlen) &#123;</span><br><span class="line">			res.push(arr[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="2-简化版"><a href="#2-简化版" class="headerlink" title="2.简化版"></a>2.简化版</h4><p>时间复杂度还是O(n^2)</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique1</span> (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> arr.filter( <span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">// indexOf返回查找到的第一个元素的下标，如果该下标不为index,说明是重复元素，则过滤掉</span></span><br><span class="line">		<span class="keyword">return</span> arr.indexOf(item) === index;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="3-Hash结构"><a href="#3-Hash结构" class="headerlink" title="3.Hash结构"></a>3.Hash结构</h4><p>时间复杂度为O(n)</p>
-<p>定义一个对象obj，将数组元素作为对象的键，遍历数组，如果键已经存在，则为重复元素，否则将元素存入res结果数组，并为obj添加键。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique2</span> (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> res = [];</span><br><span class="line">	<span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line">	arr.forEach( <span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (!obj[<span class="keyword">typeof</span> item + item]) &#123;</span><br><span class="line">			res.push(item);</span><br><span class="line">			obj[<span class="keyword">typeof</span> item + item] = <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="4-hasOwnProperty"><a href="#4-hasOwnProperty" class="headerlink" title="4.hasOwnProperty"></a>4.hasOwnProperty</h4><p>通过对象的hasOwnProperty()方法检测给定的字符串是否是对象的自有属性。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique3</span> (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line">	<span class="keyword">return</span> arr.filter( <span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> obj.hasOwnProperty(<span class="keyword">typeof</span> item + item) ? <span class="literal">false</span> : </span><br><span class="line">		(obj[<span class="keyword">typeof</span> item + item] = <span class="literal">true</span>);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="5-区分对象类型"><a href="#5-区分对象类型" class="headerlink" title="5.区分对象类型"></a>5.区分对象类型</h4><p>上面的typeof不能区分两个对象，比如{val:1}和{val:2}，typeof item + item都是”object[object Object]”，可以使用JSON.stringify将对象序列化。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique4</span> (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line">	<span class="keyword">return</span> arr.filter( <span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> obj.hasOwnProperty(<span class="keyword">typeof</span> item + <span class="built_in">JSON</span>.stringify(item)) ? <span class="literal">false</span> : </span><br><span class="line">		(obj[<span class="keyword">typeof</span> item + <span class="built_in">JSON</span>.stringify(item)] = <span class="literal">true</span>);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="6-ES6-Map"><a href="#6-ES6-Map" class="headerlink" title="6.ES6 Map"></a>6.ES6 Map</h4><p>JavaScript的对象本质上是键值对的集合（Hash结构），但是只能用字符串作为键。<br>ES6的Map和对象类似，但“键”的范围不限于字符串，可以是各种类型的值。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique5</span> (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">	<span class="keyword">return</span> arr.filter(<span class="function">(<span class="params">item</span>) =&gt;</span> !map.has(item) &amp;&amp; map.set(item, <span class="number">1</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="7-ES6-Set"><a href="#7-ES6-Set" class="headerlink" title="7.ES6 Set"></a>7.ES6 Set</h4><p>Set类似于数组，但是成员的值都是唯一的，没有重复的值。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> unique6 = <span class="function"><span class="params">arr</span> =&gt;</span> [...new <span class="built_in">Set</span>(arr)]</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/30/闭包/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -475,6 +335,142 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (let i = 0; i &lt; nodes.length; i++)&#123;</span><br><span class="line">   nodes[i].addEventListener(&apos;click&apos;,function() &#123;     </span><br><span class="line">        console.log(&apos;You clicked element #&apos; + i);    </span><br><span class="line">   &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>for循环中，变量i是let声明的，当前的i只在本轮循环有效。每次迭代，变量都会重新声明，随后的每个迭代都会使用上一个迭代结束时的值来初始化这个变量。</p>
 
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/30/数组去重/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Antong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img5.duitang.com/uploads/item/201607/24/20160724124910_TkPrd.thumb.224_0.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Antong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/30/数组去重/" itemprop="url">数组去重</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-30T00:00:00+08:00">
+                2018-05-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>unique([1,3,3,2])  //return [1,3,2]</p>
+<p>unique([1,3,’3’,2])  //return [1,3,’3’,2]</p>
+<h4 id="1-普通版"><a href="#1-普通版" class="headerlink" title="1.普通版"></a>1.普通版</h4><p>时间复杂度为O(n^2)</p>
+<p>定义一个变量数组res保存结果，遍历需要去重的数组，遍历res，如果该元素已经存在res中，则为重复元素，否则添加到res中。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique0</span> (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> res = [];</span><br><span class="line">	<span class="comment">// 遍历arr每个元素</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, len = arr.length; i &lt; len; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>, rlen = res.length; j &lt; rlen; j++) &#123;</span><br><span class="line">			<span class="comment">// 遍历res, 查找arr[i]是否已经存在</span></span><br><span class="line">			<span class="keyword">if</span> (arr[i] === res[j]) <span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// res遍历完，没找到，添加arr[i]</span></span><br><span class="line">		<span class="keyword">if</span> (j === rlen) &#123;</span><br><span class="line">			res.push(arr[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-简化版"><a href="#2-简化版" class="headerlink" title="2.简化版"></a>2.简化版</h4><p>时间复杂度还是O(n^2)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique1</span> (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> arr.filter( <span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">// indexOf返回查找到的第一个元素的下标，如果该下标不为index,说明是重复元素，则过滤掉</span></span><br><span class="line">		<span class="keyword">return</span> arr.indexOf(item) === index;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-Hash结构"><a href="#3-Hash结构" class="headerlink" title="3.Hash结构"></a>3.Hash结构</h4><p>时间复杂度为O(n)</p>
+<p>定义一个对象obj，将数组元素作为对象的键，遍历数组，如果键已经存在，则为重复元素，否则将元素存入res结果数组，并为obj添加键。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique2</span> (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> res = [];</span><br><span class="line">	<span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line">	arr.forEach( <span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (!obj[<span class="keyword">typeof</span> item + item]) &#123;</span><br><span class="line">			res.push(item);</span><br><span class="line">			obj[<span class="keyword">typeof</span> item + item] = <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-hasOwnProperty"><a href="#4-hasOwnProperty" class="headerlink" title="4.hasOwnProperty"></a>4.hasOwnProperty</h4><p>通过对象的hasOwnProperty()方法检测给定的字符串是否是对象的自有属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique3</span> (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line">	<span class="keyword">return</span> arr.filter( <span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> obj.hasOwnProperty(<span class="keyword">typeof</span> item + item) ? <span class="literal">false</span> : </span><br><span class="line">		(obj[<span class="keyword">typeof</span> item + item] = <span class="literal">true</span>);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="5-区分对象类型"><a href="#5-区分对象类型" class="headerlink" title="5.区分对象类型"></a>5.区分对象类型</h4><p>上面的typeof不能区分两个对象，比如{val:1}和{val:2}，typeof item + item都是”object[object Object]”，可以使用JSON.stringify将对象序列化。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique4</span> (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line">	<span class="keyword">return</span> arr.filter( <span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> obj.hasOwnProperty(<span class="keyword">typeof</span> item + <span class="built_in">JSON</span>.stringify(item)) ? <span class="literal">false</span> : </span><br><span class="line">		(obj[<span class="keyword">typeof</span> item + <span class="built_in">JSON</span>.stringify(item)] = <span class="literal">true</span>);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="6-ES6-Map"><a href="#6-ES6-Map" class="headerlink" title="6.ES6 Map"></a>6.ES6 Map</h4><p>JavaScript的对象本质上是键值对的集合（Hash结构），但是只能用字符串作为键。<br>ES6的Map和对象类似，但“键”的范围不限于字符串，可以是各种类型的值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique5</span> (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">	<span class="keyword">return</span> arr.filter(<span class="function">(<span class="params">item</span>) =&gt;</span> !map.has(item) &amp;&amp; map.set(item, <span class="number">1</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="7-ES6-Set"><a href="#7-ES6-Set" class="headerlink" title="7.ES6 Set"></a>7.ES6 Set</h4><p>Set类似于数组，但是成员的值都是唯一的，没有重复的值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> unique6 = <span class="function"><span class="params">arr</span> =&gt;</span> [...new <span class="built_in">Set</span>(arr)]</span><br></pre></td></tr></table></figure>
           
         
       
