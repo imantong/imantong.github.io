@@ -249,6 +249,139 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/30/闭包/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Antong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img5.duitang.com/uploads/item/201607/24/20160724124910_TkPrd.thumb.224_0.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Antong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/30/闭包/" itemprop="url">闭包</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-30T00:00:00+08:00">
+                2018-05-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>闭包是指有权访问另一个函数作用域中的变量的函数。<br><br><br>创建闭包的常见方式，就是在一个函数内部创建另一个函数。</p>
+<p><hr><br>题目：如果页面中有10个按钮，通过循环来给每个按钮绑定点击事件，则点击第3个按钮，输出什么？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var nodes =document.getElementsByTagName(&apos;button&apos;);</span><br><span class="line">for (var i = 0; i &lt; nodes.length; i++)&#123;</span><br><span class="line">   nodes[i].addEventListener(&apos;click&apos;,function() &#123;</span><br><span class="line">      console.log(&apos;You clicked element #&apos; + i);</span><br><span class="line">   &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出都是10。<br>因为click事件是在for循环结束才触发的，此时变量i的值已经是10。每个事件函数引用的都是同一个全局变量i，所以在事件函数中顺着作用域链从内向外查找变量i时，找到的都是10.</p>
+<p><strong>解决：</strong><br></p>
+<ol>
+<li>使用IIFE（立即执行函数）把事件函数封闭起来，为每个迭代生成一个新的作用域，在每个迭代中储存i的值，返回事件函数。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">for (var i = 0; i &lt; nodes.length; i++)&#123;</span><br><span class="line">   nodes[i].addEventListener( &apos;click&apos;, (function() &#123;</span><br><span class="line">   	  var j = i;</span><br><span class="line">      return function()&#123;</span><br><span class="line">      	console.log(&apos;You clicked element #&apos; + j);</span><br><span class="line">      &#125;;</span><br><span class="line">   &#125;)() );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>改进：将i作为参数传递到IIFE中去，变量名可以任意取，比如叫j.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for (var i = 0; i &lt; nodes.length; i++)&#123;</span><br><span class="line">   nodes[i].addEventListener( &apos;click&apos;, (function(j) &#123;</span><br><span class="line">      return function()&#123;</span><br><span class="line">      	console.log(&apos;You clicked element #&apos; + j);</span><br><span class="line">      &#125;;</span><br><span class="line">   &#125;)(i) );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.上面使用IIFE在每次迭代时都创建一个新的作用域，换句话说，每次迭代我们都需要一个块级作用域。可以用let声明变量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (let i = 0; i &lt; nodes.length; i++)&#123;</span><br><span class="line">   nodes[i].addEventListener(&apos;click&apos;,function() &#123;     </span><br><span class="line">        console.log(&apos;You clicked element #&apos; + i);    </span><br><span class="line">   &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>for循环中，变量i是let声明的，当前的i只在本轮循环有效。每次迭代，变量都会重新声明，随后的每个迭代都会使用上一个迭代结束时的值来初始化这个变量。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/18/图片自适应浏览器宽度变化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1205,130 +1338,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/04/border-collapse属性折叠边框/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Antong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://img5.duitang.com/uploads/item/201607/24/20160724124910_TkPrd.thumb.224_0.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Antong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/04/border-collapse属性折叠边框/" itemprop="url">border-collapse属性折叠表格边框</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-04T00:00:00+08:00">
-                2018-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>指定表格边框：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">table, th, td </span><br><span class="line">&#123;</span><br><span class="line">	border: 1px solid back;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样制定的表格有双边框，因为table、th和td元素都有独立的边界。</p>
-<p>为了显示单个边框，使用 border-collapse属性：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">table</span><br><span class="line">&#123;</span><br><span class="line">	border-collapse:collapse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/04/伪类选择器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1462,7 +1471,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/03/Mac快捷键/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/04/border-collapse属性折叠边框/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Antong">
@@ -1481,7 +1490,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/03/Mac快捷键/" itemprop="url">Mac、Safari快捷键</a></h1>
+                <a class="post-title-link" href="/2018/01/04/border-collapse属性折叠边框/" itemprop="url">border-collapse属性折叠表格边框</a></h1>
         
 
         <div class="post-meta">
@@ -1493,8 +1502,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-03T00:00:00+08:00">
-                2018-01-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-04T00:00:00+08:00">
+                2018-01-04
               </time>
             
 
@@ -1533,8 +1542,12 @@
       
         
           
-            <h1 id="Mac快捷键"><a href="#Mac快捷键" class="headerlink" title="Mac快捷键"></a>Mac快捷键</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Command-M	 将最前面的窗口最小化至 Dock</span><br><span class="line"></span><br><span class="line">control+command+f   全屏</span><br><span class="line"></span><br><span class="line">Command-Tab	 切换应用：在打开的应用中切换到下一个最近使用的应用</span><br><span class="line"></span><br><span class="line">Option-Command-Esc	强制退出：选择要强制退出的应用</span><br><span class="line">Command–空格键	      显示或隐藏 Spotlight 搜索栏</span><br><span class="line">Command-H	        隐藏最前面的应用的窗口</span><br><span class="line">Shift-Command-3	    屏幕快照：拍摄整个屏幕的屏幕快照</span><br><span class="line">Shift-Command-4	    对屏幕的选定部分拍摄屏幕快照</span><br><span class="line">Command-逗号 (,)	   偏好设置：打开最前面的应用的偏好设置</span><br></pre></td></tr></table></figure>
-<h1 id="Safari快捷键"><a href="#Safari快捷键" class="headerlink" title="Safari快捷键"></a>Safari快捷键</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Command+L   前往URL地址栏，填写新的网址或进行搜索</span><br><span class="line"></span><br><span class="line">Command+T   开启新的浏览器标签页</span><br><span class="line"></span><br><span class="line">Command+W   关闭当前标签页</span><br><span class="line"></span><br><span class="line">Command+R   刷新当前标签页</span><br><span class="line"></span><br><span class="line">Command+.   停止载入当前标签页</span><br><span class="line"></span><br><span class="line">Command+D   添加收藏标签</span><br><span class="line"></span><br><span class="line">control+tab 切换标签页</span><br><span class="line"></span><br><span class="line">control+shift+tab 切换到上一个标签</span><br></pre></td></tr></table></figure>
+            <p>指定表格边框：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">table, th, td </span><br><span class="line">&#123;</span><br><span class="line">	border: 1px solid back;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样制定的表格有双边框，因为table、th和td元素都有独立的边界。</p>
+<p>为了显示单个边框，使用 border-collapse属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">table</span><br><span class="line">&#123;</span><br><span class="line">	border-collapse:collapse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
           
         
       
@@ -1623,7 +1636,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1636,7 +1649,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
