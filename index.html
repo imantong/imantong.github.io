@@ -320,15 +320,15 @@
       
         
           
-            <p>闭包是指有权访问另一个函数作用域中的变量的函数。<br><br><br>创建闭包的常见方式，就是在一个函数内部创建另一个函数。</p>
-<p><hr><br>题目：如果页面中有10个按钮，通过循环来给每个按钮绑定点击事件，则点击第3个按钮，输出什么？</p>
+            <p>闭包是指有权访问另一个函数作用域中的变量的函数。<br>创建闭包的常见方式，就是在一个函数内部创建另一个函数。</p>
+<p>题目：如果页面中有10个按钮，通过循环来给每个按钮绑定点击事件，则点击第3个按钮，输出什么？</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var nodes =document.getElementsByTagName(&apos;button&apos;);</span><br><span class="line">for (var i = 0; i &lt; nodes.length; i++)&#123;</span><br><span class="line">   nodes[i].addEventListener(&apos;click&apos;,function() &#123;</span><br><span class="line">      console.log(&apos;You clicked element #&apos; + i);</span><br><span class="line">   &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>输出都是10。<br>因为click事件是在for循环结束才触发的，此时变量i的值已经是10。每个事件函数引用的都是同一个全局变量i，所以在事件函数中顺着作用域链从内向外查找变量i时，找到的都是10.</p>
-<p><strong>解决：</strong><br></p>
+<p><strong>解决：</strong></p>
 <ol>
 <li>使用IIFE（立即执行函数）把事件函数封闭起来，为每个迭代生成一个新的作用域，在每个迭代中储存i的值，返回事件函数。</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">for (var i = 0; i &lt; nodes.length; i++)&#123;</span><br><span class="line">   nodes[i].addEventListener( &apos;click&apos;, (function() &#123;</span><br><span class="line">   	  var j = i;</span><br><span class="line">      return function()&#123;</span><br><span class="line">      	console.log(&apos;You clicked element #&apos; + j);</span><br><span class="line">      &#125;;</span><br><span class="line">   &#125;)() );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">for (var i = 0; i &lt; nodes.length; i++)&#123;</span><br><span class="line">   nodes[i].addEventListener( &apos;click&apos;, (function() &#123;</span><br><span class="line">   	 var j = i;</span><br><span class="line">      return function()&#123;</span><br><span class="line">      	console.log(&apos;You clicked element #&apos; + j);</span><br><span class="line">      &#125;;</span><br><span class="line">   &#125;)() );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>改进：将i作为参数传递到IIFE中去，变量名可以任意取，比如叫j.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for (var i = 0; i &lt; nodes.length; i++)&#123;</span><br><span class="line">   nodes[i].addEventListener( &apos;click&apos;, (function(j) &#123;</span><br><span class="line">      return function()&#123;</span><br><span class="line">      	console.log(&apos;You clicked element #&apos; + j);</span><br><span class="line">      &#125;;</span><br><span class="line">   &#125;)(i) );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>2.上面使用IIFE在每次迭代时都创建一个新的作用域，换句话说，每次迭代我们都需要一个块级作用域。可以用let声明变量。</p>
@@ -503,6 +503,131 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/17/水平垂直居中/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Antong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img5.duitang.com/uploads/item/201607/24/20160724124910_TkPrd.thumb.224_0.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Antong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/17/水平垂直居中/" itemprop="url">水平垂直居中</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-17T00:00:00+08:00">
+                2018-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>灰色元素在浏览器中水平垂直居中：</p>
+<p>灰色元素position值为absolute；</p>
+<p><strong>利用margin负值设置居中：</strong></p>
+<p>margin-left 为元素宽度的一半；</p>
+<p>margin-top 为元素高度的一半。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;absolute&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">.absolute &#123;</span><br><span class="line">	width: 400px;</span><br><span class="line">	height: 200px;</span><br><span class="line">	background-color: #ccc;</span><br><span class="line">	position: absolute;</span><br><span class="line">	top: 50%;</span><br><span class="line">	left: 50%;</span><br><span class="line">	margin-top: -100px;</span><br><span class="line">	margin-left: -200px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/17/border-radius/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -602,131 +727,6 @@
 
 <p><strong>利用border-radius画四分之一圆形：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;quarter-circle&quot;&gt;&lt;/div&gt;</span><br><span class="line">.quarter-circle &#123;</span><br><span class="line">	width: 50px;</span><br><span class="line">	height: 50px;</span><br><span class="line">	background-color: #fc0;</span><br><span class="line">	border-bottom-right-radius: 50px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/17/水平垂直居中/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Antong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://img5.duitang.com/uploads/item/201607/24/20160724124910_TkPrd.thumb.224_0.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Antong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/17/水平垂直居中/" itemprop="url">水平垂直居中</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-17T00:00:00+08:00">
-                2018-01-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>灰色元素在浏览器中水平垂直居中：</p>
-<p>灰色元素position值为absolute；</p>
-<p><strong>利用margin负值设置居中：</strong></p>
-<p>margin-left 为元素宽度的一半；</p>
-<p>margin-top 为元素高度的一半。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;absolute&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">.absolute &#123;</span><br><span class="line">	width: 400px;</span><br><span class="line">	height: 200px;</span><br><span class="line">	background-color: #ccc;</span><br><span class="line">	position: absolute;</span><br><span class="line">	top: 50%;</span><br><span class="line">	left: 50%;</span><br><span class="line">	margin-top: -100px;</span><br><span class="line">	margin-left: -200px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
